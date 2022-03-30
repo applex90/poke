@@ -1,5 +1,6 @@
 let offset = 0;
 let pokemonArray = [];
+let setCounter = false;
 
 
 document.addEventListener('keydown', function (event) {
@@ -12,7 +13,10 @@ document.addEventListener('keydown', function (event) {
 function showMoreBtn() {
     let showMoreBtn = document.getElementById('showMoreContainer');
     showMoreBtn.classList.remove('d-none');
-    setTimeout(function () { showMoreBtn.classList.add('d-none') }, 4000);
+    if (setCounter == false) {
+        setCounter = true;
+        setTimeout(function () { showMoreBtn.classList.add('d-none'); setCounter = false; }, 4000);
+    }
 }
 
 
@@ -143,8 +147,8 @@ function renderContentAbout(currentPokemon) {
 
 function renderContentStats(currentPokemon) {
     let totalPoints = calcTotalPoints(currentPokemon);
-    totalPointsPercent = totalPoints/6;
-    
+    totalPointsPercent = totalPoints / 6;
+
     document.getElementById('content-stats').innerHTML = `
         <table>
         <tr>
@@ -200,11 +204,11 @@ function renderContentStats(currentPokemon) {
 }
 
 
-function calcTotalPoints(currentPokemon){
+function calcTotalPoints(currentPokemon) {
     let sumPoints = 0;
 
     for (let t = 0; t < 6; t++) {
-        sumPoints += currentPokemon['stats'][t]['base_stat']; 
+        sumPoints += currentPokemon['stats'][t]['base_stat'];
     }
     return sumPoints;
 }
