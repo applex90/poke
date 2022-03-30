@@ -23,7 +23,6 @@ function showStats() {
     document.getElementById('content-stats').classList.remove('d-none');
     document.getElementById('tab-stats').classList.add('d-border');
     document.getElementById('tab-stats').style.opacity = 1;
-
 }
 
 
@@ -143,9 +142,9 @@ function renderContentAbout(currentPokemon) {
 
 
 function renderContentStats(currentPokemon) {
-
     let totalPoints = calcTotalPoints(currentPokemon);
     totalPointsPercent = totalPoints/6;
+    
     document.getElementById('content-stats').innerHTML = `
         <table>
         <tr>
@@ -203,11 +202,11 @@ function renderContentStats(currentPokemon) {
 
 function calcTotalPoints(currentPokemon){
     let sumPoints = 0;
+
     for (let t = 0; t < 6; t++) {
         sumPoints += currentPokemon['stats'][t]['base_stat']; 
     }
     return sumPoints;
-    
 }
 
 
@@ -229,7 +228,6 @@ function renderColor(currentPokemon) {
 
 
 function renderPreviewList(pokemonList) {
-
     for (let i = offset; i < pokemonList.length; i++) {
         const result = pokemonList[i];
         let pokeId = result['id'];
@@ -244,14 +242,12 @@ function renderPreviewList(pokemonList) {
             <img class="previewImage" id="image-${pokeId}">
             </div>
         </div> `;
-
         renderTypes(i, pokeId);
     }
 }
 
 
 function renderTypes(i, pokeId) {
-
     let pokeType = pokemonArray[i]['types'];
 
     for (let j = 1; j < pokeType.length; j++) {
@@ -267,8 +263,8 @@ function renderTypes(i, pokeId) {
 
 
 function renderSpeciesColor(i, pokeId) {
-
     let pokeColor = pokemonArray[i]['types'][0]['color'];
+
     if (pokeColor == "white") {
         document.getElementById(`prev-${pokeId}`).style.backgroundColor = "#888888";
     } else {
