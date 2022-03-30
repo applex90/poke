@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <title>Pokedex</title>
@@ -15,25 +16,27 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap"
         rel="stylesheet">
-   
+
 </head>
 
-<body onload="loadPokemon()">
+<body onload="loadNext10Pokemons()" onscroll="showMoreBtn()">
 
     <div class="pokemon-header">
         <h1>Pokedex</h1>
         <img class="pokeball" src="./img/pokeball.png">
     </div>
 
-    <div id="pokedex">
-        <h1 id="pokemonName">Name</h1>
+    <div class="listOfPokemons" id="pokeList">
+        
 
     </div>
+    
+    <div class="pokemonCard d-none" id="pokeCard"></div>
 
-    <div class="info-container">
-        <img id="pokemonImage">
+    <div class="button-container d-none" id="showMoreContainer">
+        <button class="showMore-btn" onclick="showMore()">Show more + 10</button>
     </div>
-
+    
 
 </body>
 
