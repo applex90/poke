@@ -16,7 +16,8 @@ body {
     font-size: 18px;
     padding: 24px;
     color: #393f46;
-    box-shadow: 0 0 3px 0 rgb(0 0 0 / 0.6);
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 0.6);
+    background-color: lightgrey;
     display: flex;
     align-items: center;
 }
