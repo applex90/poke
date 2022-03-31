@@ -123,11 +123,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    text-shadow: 0 0 20px #000000;
 }
 
 .rightSideHeader {
     display: flex;
     align-items: flex-end;
+    text-shadow: 0 0 20px #000000;
 }
 
 .pokemonCard {
@@ -146,6 +148,14 @@ body {
 
 .previewDetails{
     max-width: 165px;
+}
+
+.previewDetails h1{
+    text-shadow: 0 0 20px #000000;
+}
+
+.previewDetails span{
+    text-shadow: 0 0 20px #000000;
 }
 
 .pokemonId {

@@ -232,12 +232,7 @@ function renderColor(currentPokemon) {
         `;
     }
     let pokeColor = currentPokemon['types'][0]['color'];
-
-    if (pokeColor == "white") {
-        document.getElementById("pokedex").style.backgroundColor = "#888888";
-    } else {
-        document.getElementById("pokedex").style.backgroundColor = pokeColor;
-    }
+    document.getElementById("pokedex").style.backgroundColor = pokeColor;
 }
 
 
@@ -278,10 +273,5 @@ function renderTypes(i, pokeId) {
 
 function renderSpeciesColor(i, pokeId) {
     let pokeColor = pokemonArray[i]['types'][0]['color'];
-
-    if (pokeColor == "white") {
-        document.getElementById(`prev-${pokeId}`).style.backgroundColor = "#888888";
-    } else {
-        document.getElementById(`prev-${pokeId}`).style.backgroundColor = pokeColor;
-    }
+    document.getElementById(`prev-${pokeId}`).style.backgroundColor = pokeColor;
 }   
