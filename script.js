@@ -15,7 +15,7 @@ function showMoreBtn() {
     showMoreBtn.classList.remove('d-none');
     if (setCounter == false) {
         setCounter = true;
-        setTimeout(function () { showMoreBtn.classList.add('d-none'); setCounter = false; }, 4000);
+        setTimeout(function () { showMoreBtn.classList.add('d-none'); setCounter = false; }, 10000);
     }
 }
 
@@ -83,7 +83,15 @@ function openPokeCard(id) {
 function renderPokeCard(i) {
     let currentPokemon = pokemonArray[i];
 
-    document.getElementById('pokeCard').innerHTML = `
+    document.getElementById('pokeCard').innerHTML = generatePokemonCardHTML(currentPokemon);
+    renderContentAbout(currentPokemon);
+    renderContentStats(currentPokemon);
+    renderColor(currentPokemon);
+}
+
+
+function generatePokemonCardHTML(currentPokemon){
+    return `
     <div id="pokedex">
         <div class="pokedexHeader">
             <div class="leftSideHeader">
@@ -111,9 +119,6 @@ function renderPokeCard(i) {
         </div>
     </div>
     `;
-    renderContentAbout(currentPokemon);
-    renderContentStats(currentPokemon);
-    renderColor(currentPokemon);
 }
 
 
@@ -149,58 +154,63 @@ function renderContentStats(currentPokemon) {
     let totalPoints = calcTotalPoints(currentPokemon);
     totalPointsPercent = totalPoints / 6;
 
-    document.getElementById('content-stats').innerHTML = `
-        <table>
-        <tr>
-            <td>HP</td>
-            <td>${currentPokemon['stats'][0]['base_stat']}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${currentPokemon['stats'][0]['base_stat']}%"></div>
-          </div></td>
-        </tr>
-        <tr>
-            <td>Attack</td>
-            <td>${currentPokemon['stats'][1]['base_stat']}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${currentPokemon['stats'][1]['base_stat']}%"></div>
-          </div></td>
-        </tr>
-        <tr>
-            <td>Defense</td>
-            <td>${currentPokemon['stats'][2]['base_stat']}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${currentPokemon['stats'][2]['base_stat']}%"></div>
-          </div></td>
-        </tr>
-        <tr>
-            <td>Sp. Atk</td>
-            <td>${currentPokemon['stats'][3]['base_stat']}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${currentPokemon['stats'][3]['base_stat']}%"></div>
-          </div></td>
-        </tr>
-        <tr>
-            <td>Sp. Def</td>
-            <td>${currentPokemon['stats'][4]['base_stat']}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${currentPokemon['stats'][4]['base_stat']}%"></div>
-          </div></td>
-        </tr>
-        <tr>
-            <td>Speed</td>
-            <td>${currentPokemon['stats'][5]['base_stat']}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${currentPokemon['stats'][5]['base_stat']}%"></div>
-          </div></td>
-        </tr>
-        <tr>
-            <td>Total</td>
-            <td>${totalPoints}</td>
-            <td><div id="myProgress">
-            <div id="myBar" style="width:${totalPointsPercent}%"></div>
-          </div></td>
-        </tr>
-    </table>`;
+    document.getElementById('content-stats').innerHTML = generateContentStatsHTML(currentPokemon, totalPoints, totalPointsPercent);
+}
+
+
+function generateContentStatsHTML(currentPokemon, totalPoints, totalPointsPercent){
+    return `
+    <table>
+    <tr>
+        <td>HP</td>
+        <td>${currentPokemon['stats'][0]['base_stat']}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${currentPokemon['stats'][0]['base_stat']}%"></div>
+      </div></td>
+    </tr>
+    <tr>
+        <td>Attack</td>
+        <td>${currentPokemon['stats'][1]['base_stat']}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${currentPokemon['stats'][1]['base_stat']}%"></div>
+      </div></td>
+    </tr>
+    <tr>
+        <td>Defense</td>
+        <td>${currentPokemon['stats'][2]['base_stat']}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${currentPokemon['stats'][2]['base_stat']}%"></div>
+      </div></td>
+    </tr>
+    <tr>
+        <td>Sp. Atk</td>
+        <td>${currentPokemon['stats'][3]['base_stat']}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${currentPokemon['stats'][3]['base_stat']}%"></div>
+      </div></td>
+    </tr>
+    <tr>
+        <td>Sp. Def</td>
+        <td>${currentPokemon['stats'][4]['base_stat']}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${currentPokemon['stats'][4]['base_stat']}%"></div>
+      </div></td>
+    </tr>
+    <tr>
+        <td>Speed</td>
+        <td>${currentPokemon['stats'][5]['base_stat']}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${currentPokemon['stats'][5]['base_stat']}%"></div>
+      </div></td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td>${totalPoints}</td>
+        <td><div id="myProgress">
+        <div id="myBar" style="width:${totalPointsPercent}%"></div>
+      </div></td>
+    </tr>
+</table>`
 }
 
 
